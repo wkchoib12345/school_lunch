@@ -8,7 +8,11 @@ import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.kim.think_coding.test.String_Maker;
+import com.kim.think_coding.test.Toast_message;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -20,6 +24,7 @@ public class MainActivity extends AppCompatActivity{
 
     private WebView mWebView;
     private WebSettings mWebSettings;
+    public TextView adv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -42,14 +47,26 @@ public class MainActivity extends AppCompatActivity{
 
 
         mWebView.loadUrl("http://p-namsan.ms.kr/asp/food/FOOD_1001/main.html?siteid=p-namsanms&boardid=food&uid="+mFormat.format(mDate)+"&pagemode=view");
-        
 
 
         ExampleThread thread = new ExampleThread();
         thread.start();
 
 
+        Toast.makeText(getApplicationContext(),mFormat.format(mDate)+"",Toast.LENGTH_LONG).show();
+        String a = mFormat.format(mDate) + "";
+
+//        Test mTest = new Test(a);
+
+        Toast_message mToast_message =  new Toast_message(a, getApplicationContext());
+
+        adv = (TextView) findViewById(R.id.made);
+        String_Maker mString_Maker = new String_Maker("wkchoib12345", 20190203);
+        adv.setText(mString_Maker.send_string);
     }
+
+
+
 
     private class ExampleThread extends Thread {
         private static final String TAG = "ExampleThread";
@@ -85,6 +102,14 @@ public class MainActivity extends AppCompatActivity{
         }
     };
 
+    public class Test{
+
+        private Test(String toast){
+            Toast.makeText(getApplicationContext(),toast,Toast.LENGTH_LONG).show();
+
+        }
+
+    }
 
 
 
