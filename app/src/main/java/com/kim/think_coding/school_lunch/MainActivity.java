@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity{
         adv = (TextView) findViewById(R.id.made);
         String_Maker mString_Maker = new String_Maker("wkchoib12345", 20190203);
         adv.setText(mString_Maker.send_string);
+
     }
 
 
